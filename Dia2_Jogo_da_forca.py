@@ -16,24 +16,24 @@ def play(word):
     guessed_letters = []
     guessed_words = []
     tries = 6
-    print("\n********** JOGO DA FORCA **********")
+    print("\n                       ********** JOGO DA FORCA **********")
     print()
-    print(f'  Super Dica: É um nome de animal com {len(word)} letras!')
+    print(f'\n                        Super Dica: É um nome de animal com {len(word)} letras!')
     print(Corpo_forca(tries))
     print(word_completion)
     print("\n")
     
     while not guessed and tries > 0:
-        guess = input("Diga uma letra ou tente adivinhar a palavra: ").upper()
+        guess = input("\n                     Diga uma letra ou tente adivinhar a palavra: ").upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print(f'\n Xiii, você já tentou a letra {guess}')
+                print(f'\n                      Xiii, você já tentou a letra {guess}')
             elif guess not in word:
-                print(f'\n É não deu certo... a letra "{guess}" não está na palavra.')
+                print(f'\n                      É não deu certo... a letra "{guess}" não está na palavra.')
                 tries -= 1
                 guessed_letters.append(guess)
             else:
-                print(f'\n Yesss! A letra "{guess}" está na palavra!')
+                print(f'\n                      Yesss! A letra "{guess}" está na palavra!')
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
@@ -44,107 +44,107 @@ def play(word):
                     guessed = True
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
-                print(f'\n Oh não! Você já tentou a palavra "{guess}""')
+                print(f'\n                      Oh não! Você já tentou a palavra "{guess}""')
             elif guess != word:
-                print(f'\n Não foi dessa vez, "{guess}"não é a palavra correta.')
+                print(f'\n                      Não foi dessa vez, "{guess}"não é a palavra correta.')
                 tries -= 1
                 guessed_words.append(guess)
             else:
                 guessed = True
                 word_completion = word
         else:
-            print("Tá precisando aprender a contar as letras direito....")
+            print("\n                             Tá precisando aprender a contar as letras direito....")
         print(Corpo_forca(tries))
         print(word_completion)
         print("\n")
     if guessed:
-        print("Muito bem! Você adivinhou a palavra! Levanta a taça que você venceu!")
+        print("\n                               Muito bem! Você adivinhou a palavra! Levanta a taça que você venceu!")
     else:
-        print("Poxa...Você perdeu!. A palavra era " + word + ", mas tente de novo eu percebi que você está melhorando.")
+        print("\n                               Poxa...Você perdeu!. A palavra era " + word + ", mas tente de novo eu percebi que você está melhorando.")
 
 def Corpo_forca(tries):
     stages = [  # cabeça, tronco e braços e pernas: morte.
                 """
                   
-                   --------
-                   |      |
-                   |      O
-                   |     \|/
-                   |      |
-                   |     / \
-                   -
+                                        --------
+                                        |      |
+                                        |      O
+                                        |     \|/
+                                        |      |
+                                        |     / \
+                                        -
 
                 """,
                 # cabeça, tronco e braços, perna
                 """
                   
-                   --------
-                   |      |
-                   |      O
-                   |     \|/
-                   |      |
-                   |     / 
-                   -
+                                        --------
+                                        |      |
+                                        |      O
+                                        |     \|/
+                                        |      |
+                                        |     / 
+                                        -
 
                 """,
                 # cabeça, tronco e braços
                 """
 
-                   --------
-                   |      |
-                   |      O
-                   |     \|/
-                   |      |
-                   |      
-                   -
+                                        --------
+                                        |      |
+                                        |      O
+                                        |     \|/
+                                        |      |
+                                        |      
+                                        -
 
                 """,
                 # cabeça, tronco e braço
                 """
 
-                   --------
-                   |      |
-                   |      O
-                   |     \|
-                   |      |
-                   |     
-                   -
+                                        --------
+                                        |      |
+                                        |      O
+                                        |     \|
+                                        |      |
+                                        |     
+                                        -
 
                 """,
                 # cabeça e tronco
                 """
 
-                   --------
-                   |      |
-                   |      O
-                   |      |
-                   |      |
-                   |     
-                   -
+                                        --------
+                                        |      |
+                                        |      O
+                                        |      |
+                                        |      |
+                                        |     
+                                        -
 
                 """,
                 # cabeça
                 """
 
-                   --------
-                   |      |
-                   |      O
-                   |    
-                   |      
-                   |     
-                   -
+                                        --------
+                                        |      |
+                                        |      O
+                                        |    
+                                        |      
+                                        |     
+                                        -    
 
                 """,
                 # vazio
                 """
 
-                   --------
-                   |      |
-                   |      
-                   |    
-                   |      
-                   |     
-                   -
+                                        --------
+                                        |      |
+                                        |      
+                                        |    
+                                        |      
+                                        |     
+                                        -
 
                 """
     ]
@@ -153,7 +153,7 @@ def Corpo_forca(tries):
 def main():
     word = get_word()
     play(word)
-    while input("\nQue tal jogarmos de novo? (S/N) ").upper() == "S":
+    while input("\n                     Que tal jogarmos de novo? (S/N) ").upper() == "S":
         word = get_word()
         play(word)
 
